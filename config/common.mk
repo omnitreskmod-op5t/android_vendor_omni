@@ -1,14 +1,5 @@
 PRODUCT_BRAND ?= omni
 
-# use specific resolution for bootanimation
-ifneq ($(TARGET_BOOTANIMATION_SIZE),)
-PRODUCT_COPY_FILES += \
-    vendor/omni/prebuilt/bootanimation/res/$(TARGET_BOOTANIMATION_SIZE).zip:system/media/bootanimation.zip
-else
-PRODUCT_COPY_FILES += \
-    vendor/omni/prebuilt/bootanimation/bootanimation.zip:system/media/bootanimation.zip
-endif
-
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.com.google.clientidbase=android-google
