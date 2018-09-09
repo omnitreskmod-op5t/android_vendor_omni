@@ -1,7 +1,5 @@
 # Additional apps
 PRODUCT_PACKAGES += \
-    MonthCalendarWidget \
-    OmniSwitch \
     Chromium \
     OmniJaws \
     OmniStyle \
