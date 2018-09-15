@@ -107,4 +107,12 @@
     <string name="config_timeZoneRulesDataPackage">com.google.android.timezone.data</string>
     <string name="config_dreamsDefaultComponent">com.google.android.deskclock/com.android.deskclock.Screensaver</string>
 
+    <!-- Round UI stuff -->
+    <!-- default window inset isRound property -->
+    <bool name="config_windowIsRound">true</bool>
+     <!-- Corner radius of system dialogs -->
+    <dimen name="config_dialogCornerRadius">16.0dip</dimen> <!-- default: 2dp -->
+    <dimen name="config_buttonCornerRadius">8.0dip</dimen> <!-- default: 2dp -->
+    <dimen name="config_progressBarCornerRadius">1000.0dip</dimen> <!-- default: 0 -->
+
 </resources>
