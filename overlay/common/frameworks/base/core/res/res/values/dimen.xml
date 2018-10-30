@@ -24,4 +24,7 @@
     <!-- Total height of QQS (quick_qs_offset_height + 128) -->
     <dimen name="quick_qs_total_height">168dp</dimen>
 
+    <!-- influences if we can split screen onloy by half or third -->
+    <!-- 220dp -->
+    <dimen name="default_minimal_size_resizable_task">200dp</dimen>
 </resources>

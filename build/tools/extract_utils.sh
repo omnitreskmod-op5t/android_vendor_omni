@@ -796,6 +796,10 @@ function oat2dex() {
         export VDEXEXTRACTOR="$CM_ROOT"/vendor/omni/build/tools/"$HOST"/vdexExtractor
    fi
 
+    if [ -z "$CDEXCONVERTER" ]; then
+        export CDEXCONVERTER="$CM_ROOT"/vendor/omni/build/tools/"$HOST"/compact_dex_converter
+    fi
+
     # Extract existing boot.oats to the temp folder
     if [ -z "$ARCHES" ]; then
         echo "Checking if system is odexed and locating boot.oats..."
@@ -831,23 +835,34 @@ function oat2dex() {
         if get_file "$OAT" "$TMPDIR" "$SRC"; then
             if get_file "$VDEX" "$TMPDIR" "$SRC"; then
                 "$VDEXEXTRACTOR" -o "$TMPDIR/" -i "$TMPDIR/$(basename "$VDEX")" > /dev/null
-                mv "$TMPDIR/$(basename "${OEM_TARGET%.*}").apk_classes.dex" "$TMPDIR/classes.dex"
+                # Check if we have to deal with CompactDex
+                if [ -f "$TMPDIR/$(basename "${OEM_TARGET%.*}")_classes.cdex" ]; then
+                    "$CDEXCONVERTER" "$TMPDIR/$(basename "${OEM_TARGET%.*}")_classes.cdex" &> /dev/null
+                    mv "$TMPDIR/$(basename "${OEM_TARGET%.*}")_classes.cdex.new" "$TMPDIR/classes.dex"
+                else
+                    mv "$TMPDIR/$(basename "${OEM_TARGET%.*}")_classes.dex" "$TMPDIR/classes.dex"
+                fi
             else
                 "$OATDUMP" --oat-file="$TMPDIR/$(basename "$OAT")" --export-dex-to="$TMPDIR" > /dev/null
                 mv "$(find "$TMPDIR" -maxdepth 1 -type f -name "*_export.dex" | wc -l | tr -d ' ')" "$TMPDIR/classes.dex"
             fi
         elif [[ "$CM_TARGET" =~ .jar$ ]]; then
             JAROAT="$TMPDIR/system/framework/$ARCH/boot-$(basename ${OEM_TARGET%.*}).oat"
-            JARVDEX="$TMPDIR/system/framework/$ARCH/boot-$(basename ${OEM_TARGET%.*}).vdex"
+            JARVDEX="/system/framework/boot-$(basename ${OEM_TARGET%.*}).vdex"
             if [ ! -f "$JAROAT" ]; then
-                JAROAT=$BOOTOAT;
+                JAROAT=$BOOTOAT
             fi
-
             # try to extract classes.dex from boot.vdex for frameworks jars
             # fallback to boot.oat if vdex is not available
-            if [ -f "$JARVDEX" ]; then
-                "$VDEXEXTRACTOR" -o "$TMPDIR/" -i "$JARVDEX" > /dev/null
-                mv "$TMPDIR/boot-$(basename "${OEM_TARGET%.*}").apk_classes.dex" "$TMPDIR/classes.dex"
+            if get_file "$JARVDEX" "$TMPDIR" "$SRC"; then
+                "$VDEXEXTRACTOR" -o "$TMPDIR/" -i "$TMPDIR/$(basename "$JARVDEX")"
+                # Check if we have to deal with CompactDex
+                if [ -f "$TMPDIR/$(basename "${JARVDEX%.*}")_classes.cdex" ]; then
+                    "$CDEXCONVERTER" "$TMPDIR/$(basename "${JARVDEX%.*}")_classes.cdex" &> /dev/null
+                    mv "$TMPDIR/$(basename "${JARVDEX%.*}")_classes.cdex.new" "$TMPDIR/classes.dex"
+                else
+                    mv "$TMPDIR/$(basename "${JARVDEX%.*}")_classes.dex" "$TMPDIR/classes.dex"
+                fi
             else
                 "$OATDUMP" --oat-file="$JAROAT" --export-dex-to="$TMPDIR" > /dev/null
                 mv "$(find "$TMPDIR" -maxdepth 1 -type f -name "*_export.dex" | wc -l | tr -d ' ')" "$TMPDIR/classes.dex"
