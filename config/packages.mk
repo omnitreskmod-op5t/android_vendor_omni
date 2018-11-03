@@ -89,6 +89,10 @@ PRODUCT_PACKAGES += \
     PrimaryWarmWhite \
     PrimaryDarkBlue
 
+# Ambient Play
+PRODUCT_PACKAGES += \
+    AmbientPlayHistoryProvider
+
 # Textclassifiers
 #PRODUCT_PACKAGES += \
     textclassifier.langid.model \
