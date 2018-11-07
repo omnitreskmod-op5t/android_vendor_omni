@@ -1,7 +1,6 @@
 # Additional apps
 PRODUCT_PACKAGES += \
     Chromium \
-    OmniJaws \
     OmniStyle \
     MusicFX \
     Phonograph \
