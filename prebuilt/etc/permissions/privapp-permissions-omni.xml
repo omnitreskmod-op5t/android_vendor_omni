@@ -76,4 +76,8 @@
         <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
     </privapp-permissions>
 
+    <privapp-permissions package="org.pixelexperience.weather.client">
+        <permission name="android.permission.LOCATION_HARDWARE"/>
+    </privapp-permissions>
+
 </permissions>
