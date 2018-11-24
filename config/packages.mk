@@ -58,7 +58,8 @@ PRODUCT_BOOT_JARS += telephony-ext
 PRODUCT_PACKAGES += \
     DocumentsUITheme \
     DialerTheme \
-    TelecommTheme
+    TelecommTheme \
+    PhonographTheme
 
 PRODUCT_PACKAGES += \
     NotificationsDark \
