@@ -27,4 +27,5 @@
 
     <!-- 2dp -->
     <dimen name="qs_tile_margin_top">6dp</dimen>
+
 </resources>
