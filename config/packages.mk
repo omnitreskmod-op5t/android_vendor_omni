@@ -90,7 +90,9 @@ PRODUCT_PACKAGES += \
     PrimaryWhite \
     PrimaryColdWhite \
     PrimaryWarmWhite \
-    PrimaryDarkBlue
+    PrimaryDarkBlue \
+    PrimaryViolator \
+    PrimaryTealMeal
 
 # Textclassifiers
 #PRODUCT_PACKAGES += \
