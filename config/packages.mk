@@ -85,6 +85,7 @@ PRODUCT_PACKAGES += \
     AccentDeepPurple
 
 PRODUCT_PACKAGES += \
+    PrimaryAOSPDark \
     PrimaryAlmostBlack \
     PrimaryBlack \
     PrimaryOmni \
