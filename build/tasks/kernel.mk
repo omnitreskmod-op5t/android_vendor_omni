@@ -225,7 +225,11 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(strip $(TARGET_KERNEL_CROSS_COMPILE_PREF
 ifneq ($(TARGET_KERNEL_CROSS_COMPILE_PREFIX),)
 KERNEL_TOOLCHAIN_PREFIX ?= $(TARGET_KERNEL_CROSS_COMPILE_PREFIX)
 else ifeq ($(KERNEL_ARCH),arm64)
-KERNEL_TOOLCHAIN_PREFIX ?= aarch64-linux-androidkernel-
+ifeq ($(TARGET_KERNEL_CLANG_COMPILE),true)
+    KERNEL_TOOLCHAIN_PREFIX ?= aarch64-linux-android-
+else
+    KERNEL_TOOLCHAIN_PREFIX ?= aarch64-linux-androidkernel-
+endif
 else ifeq ($(KERNEL_ARCH),arm)
 KERNEL_TOOLCHAIN_PREFIX ?= arm-linux-androidkernel-
 else ifeq ($(KERNEL_ARCH),x86)
@@ -250,7 +254,11 @@ ifeq ($(TARGET_KERNEL_CLANG_COMPILE),true)
         # Only set the latest version of clang if TARGET_KERNEL_CLANG_VERSION hasn't been set by the device config
         KERNEL_CLANG_VERSION := $(shell ls -d $(BUILD_TOP)/prebuilts/clang/host/$(HOST_OS)-x86/clang-* | xargs -n 1 basename | tail -1)
     endif
-    TARGET_KERNEL_CLANG_PATH ?= $(BUILD_TOP)/prebuilts/clang/host/$(HOST_OS)-x86/$(KERNEL_CLANG_VERSION)/bin
+    ifneq ($(TARGET_KERNEL_CLANG_PATH),)
+        TARGET_KERNEL_CLANG_PATH := $(BUILD_TOP)/$(TARGET_KERNEL_CLANG_PATH)/bin
+    else
+        TARGET_KERNEL_CLANG_PATH ?= $(BUILD_TOP)/prebuilts/clang/host/$(HOST_OS)-x86/$(KERNEL_CLANG_VERSION)/bin
+    endif
     KBUILD_COMPILER_STRING := $(shell $(TARGET_KERNEL_CLANG_PATH)/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')
     export KBUILD_COMPILER_STRING
     ifeq ($(KERNEL_ARCH),arm64)
