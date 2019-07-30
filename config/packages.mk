@@ -2,7 +2,6 @@
 PRODUCT_PACKAGES += \
     Chromium \
     OmniStyle \
-    MusicFX \
     Phonograph \
     MatLog \
     OmniChange \
