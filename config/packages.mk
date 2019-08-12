@@ -7,7 +7,8 @@ PRODUCT_PACKAGES += \
     OmniChange \
     OpenDelta \
     Turbo \
-    OmniRecord
+    OmniRecord \
+    Longshot
 
 # Additional tools
 PRODUCT_PACKAGES += \
