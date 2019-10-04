@@ -1,14 +1,11 @@
 # Additional apps
 PRODUCT_PACKAGES += \
-    Chromium \
     OmniStyle \
     Phonograph \
     MatLog \
     OmniChange \
     OpenDelta \
-    Turbo \
-    OmniRecord \
-    WallpaperPicker2
+    OmniRecord
 
 # Additional tools
 PRODUCT_PACKAGES += \
