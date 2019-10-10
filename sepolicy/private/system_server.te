@@ -1,2 +1,1 @@
-# Long screenshot
-add_service(system_server, longshot_service)
+hal_client_domain(system_server, hal_omni_fod)

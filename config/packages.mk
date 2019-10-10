@@ -115,3 +115,7 @@ PRODUCT_PACKAGES += \
 
 #PRODUCT_PACKAGES += \
     ExtraFonts
+
+PRODUCT_PACKAGES_ENG += \
+    bash \
+    su
