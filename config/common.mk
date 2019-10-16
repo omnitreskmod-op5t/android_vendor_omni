@@ -70,8 +70,8 @@ PRODUCT_COPY_FILES += \
     vendor/omni/prebuilt/etc/permissions/omni-power-whitelist.xml:system/etc/permissions/omni-power-whitelist.xml
 
 # default sounds
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.config.ringtone=The_big_adventure.ogg,Crackle.ogg \
+OMNI_PRODUCT_PROPERTIES += \
+    ro.config.ringtone=The_big_adventure.ogg \
     ro.config.notification_sound=Beginning.ogg \
     ro.config.alarm_alert=Bright_morning.ogg
 
