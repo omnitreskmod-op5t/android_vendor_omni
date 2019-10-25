@@ -14,6 +14,7 @@ OMNI_PRODUCT_PROPERTIES += \
     ro.com.android.wifi-watchlist=GoogleGuest \
     ro.setupwizard.enterprise_mode=1 \
     ro.build.selinux=1 \
+    ro.boot.vendor.overlay.theme=com.android.internal.systemui.navbar.gestural \
     persist.sys.disable_rescue=true
 
 # Google assistant
