@@ -5,7 +5,8 @@ PRODUCT_PACKAGES += \
     MatLog \
     OmniChange \
     OpenDelta \
-    OmniRecord
+    OmniRecord \
+    ThemePicker
 
 # Additional tools
 PRODUCT_PACKAGES += \
