@@ -5,8 +5,7 @@ PRODUCT_PACKAGES += \
     MatLog \
     OmniChange \
     OpenDelta \
-    OmniRecord \
-    ThemePicker
+    OmniRecord
 
 PRODUCT_PACKAGES += \
      OmniOverlayStub
