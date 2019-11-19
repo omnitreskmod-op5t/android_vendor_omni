@@ -71,7 +71,7 @@ PRODUCT_COPY_FILES += \
 
 # default sounds
 OMNI_PRODUCT_PROPERTIES += \
-    ro.config.ringtone=The_big_adventure.ogg \
+    ro.config.ringtone=The_big_adventure.ogg,The_big_adventure.ogg \
     ro.config.notification_sound=Beginning.ogg \
     ro.config.alarm_alert=Bright_morning.ogg
 
