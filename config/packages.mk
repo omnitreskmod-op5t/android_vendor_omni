@@ -8,7 +8,8 @@ PRODUCT_PACKAGES += \
     OmniRecord
 
 PRODUCT_PACKAGES += \
-     OmniOverlayStub
+     OmniOverlayStub \
+     omni-overlays
 
 # Additional tools
 PRODUCT_PACKAGES += \
