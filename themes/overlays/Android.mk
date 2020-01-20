@@ -25,8 +25,7 @@ LOCAL_REQUIRED_MODULES := \
 	PrimaryColorDarkBlueOverlay \
 	PrimaryColorDeepBlueOverlay \
 	AccentColorRedDevilOverlay \
-	FontLatoSourceOverlay \
-	FontMuliSourceOverlay	
+	FontLatoSourceOverlay
 
 include $(BUILD_PHONY_PACKAGE)
 include $(CLEAR_VARS)
