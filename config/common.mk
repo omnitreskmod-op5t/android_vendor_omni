@@ -78,9 +78,6 @@ OMNI_PRODUCT_PROPERTIES += \
 OMNI_PRODUCT_PROPERTIES += \
     ro.services.whitelist.packagelist=com.google.android.gms
 
-PRODUCT_COPY_FILES += \
-    vendor/omni/prebuilt/etc/fonts_customization.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml
-
 # Additional packages
 -include vendor/omni/config/packages.mk
 
