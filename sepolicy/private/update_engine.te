@@ -2,6 +2,7 @@ r_dir_file(update_engine, mnt_user_file)
 r_dir_file(update_engine, storage_file)
 
 allow update_engine self:capability { chown fsetid };
+allow update_engine self:process { setexec };
 
 allow update_engine labeledfs:filesystem { mount unmount };
 
@@ -28,5 +29,5 @@ allow update_engine rootfs:file { create write };
 #####
 allow update_engine proc_filesystems:file { getattr open read };
 allow update_engine system_file:lnk_file { create rename };
-allow update_engine system_lib_file:dir setattr;
+allow update_engine system_lib_file:dir { add_name setattr write };
 
