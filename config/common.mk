@@ -120,3 +120,6 @@ include vendor/gapps/config.mk
 
 # Pixel Style
 include vendor/pixelstyle/config.mk
+
+# Google Customization
+include vendor/google-customization/config.mk
